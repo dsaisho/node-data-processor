@@ -25,4 +25,6 @@ npm run handleDuplicateNames //this will run the script with a new file.
 
 ONLY USE TO MAKE MORE MONEY!
 THE VALUE OF EACH FUNCTION IS EQUAL TO THE MAN POWER HOURS IT WOULD TAKE TO DO THEM BY HAND!
-DO NOT SHOW THIS TO YOUR COMPANY!
+
+
+make sure to npm install if its your fisrt clone!

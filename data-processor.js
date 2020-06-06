@@ -182,9 +182,9 @@ fs.createReadStream(fileToUse)
 
   function handleDuplicateNames(_results){
     /*
-      find rows that match all items in the matched array
-      update store count and sku for matched items
-      return csv file with updated matching rows
+     get all rows with the same first/last name
+     merge rows.
+     if a cell had a value, use current value or next available value if there are any in the compared rows
     */
     let newResults = [];
     let total = _results.length;
@@ -206,8 +206,6 @@ fs.createReadStream(fileToUse)
         if(rowData[1].toLowerCase() == compareRowData[1].toLowerCase() && rowData[2].toLowerCase() == compareRowData[2].toLowerCase() ){
           isMatch = true;
         }
-
-        //EXIT LOOPING FOR MATCHES
         //if we have a match add it to a container that will hold all matches, and return false so it doesnt stay in results array
         if(isMatch){
           groupedData.push(searchRow);         
@@ -215,22 +213,22 @@ fs.createReadStream(fileToUse)
         }else{
           return true;
         }
-      })//EXIT FILTER
+      })//EXIT FILTER LOOKING FOR MATCHES
       //single entry gets added to new results
       if(groupedData.length == 0){
-       // newResults.push(row);
+        newResults.push(row);
       }
       //if we have grouped data, make a new row with data combined, then add to new results
       else{
         console.log('we had a match!', groupedData.length)
         isDupe ++;
-        //get the first value in the grouped data
 
-        Object.keys(row).map((key,index) => {//loop keys in that row so we look at every value
+        Object.keys(row).map((key,index) => {//loop keys in the row that was matched and look at every value
           let val = row[key];//grab a value
 
           let updatedVal = '';//prepare for an updated value
-          if(!val){//if there is no value, check the other rows for a value
+          if(!val){//if there is no initial value, check the other rows for a value
+            //reduce groupedData to look at all matching rows and finding what their value is for that cell
            val = groupedData.reduce((_acc,_val,_index)=>{//loop through other rows
               if(_acc) return _acc;//if we set a value, just keep it and dont care what the rest of the values are.
 
@@ -250,9 +248,9 @@ fs.createReadStream(fileToUse)
     }//EXIT WHILE
     //convert newResults object to a csv file
     console.log("OLD SIZE:",startSize, "NEW SIZE:", newResults.length, "TOTAL DUPLICATED:",isDupe )
-     new ObjectsToCsv(newResults).toDisk('./output/handleDuplicateNames.csv');
+    new ObjectsToCsv(newResults).toDisk('./output/handleDuplicateNames.csv');
 
-     console.log("FINISHED  " + "Started at- " + startTime + ' ENDED AT- ' + new Date().toLocaleTimeString())
+    console.log("FINISHED  " + "Started at- " + startTime + ' ENDED AT- ' + new Date().toLocaleTimeString())
   }
 
   function objectValues(_obj){
