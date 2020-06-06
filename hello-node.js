@@ -7,7 +7,7 @@ const results = [];
 const argv = require('minimist')(process.argv.slice(2));
 console.log(argv.name);
 /*
-HELLO ROXANE
+look at update
 matches = 
 [
       UPC(0), 
