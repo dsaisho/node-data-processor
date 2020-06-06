@@ -1,3 +1,11 @@
+///USAGE
+
+ONLY USE TO MAKE MORE MONEY!
+THE VALUE OF EACH FUNCTION IS EQUAL TO THE MAN POWER HOURS IT WOULD TAKE TO DO THEM BY HAND!
+
+
+make sure to npm install if its your fisrt clone!
+
 git pull //to get latest code
 
 npm run handleDuplicateNames //will do duplicate name function
@@ -21,10 +29,3 @@ then run:
 npm run handleDuplicateNames //this will run the script with a new file.
 
 
-///USAGE
-
-ONLY USE TO MAKE MORE MONEY!
-THE VALUE OF EACH FUNCTION IS EQUAL TO THE MAN POWER HOURS IT WOULD TAKE TO DO THEM BY HAND!
-
-
-make sure to npm install if its your fisrt clone!
