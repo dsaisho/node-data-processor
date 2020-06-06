@@ -4,8 +4,13 @@ const ObjectsToCsv = require('objects-to-csv');
 const fs = require('fs')
 const results = [];
 
-const argv = require('minimist')(process.argv.slice(2));
-console.log(argv.name);
+const config = require('minimist')(process.argv).config.split(',');
+console.log(config);
+
+const command = config[0]
+const fileToUse = config[1]
+
+console.log(command,fileToUse);
 /*
 look at update
 matches = 
@@ -30,9 +35,6 @@ const defaultCostLocation = 10;
 const skuLocation = 1;
 const matches = [0, 3, 11, 14, 15, 16, 19, 24, 25];
 
-
-const command = 'peoplex';
-const fileToUse = "data/people.csv"
 
 fs.createReadStream(fileToUse)
   .pipe(csv())
@@ -98,7 +100,7 @@ fs.createReadStream(fileToUse)
           groupedObjects.push(infoObject)
         }
     }//EXIT WHILE
-    new ObjectsToCsv(groupedObjects).toDisk('./output/groupedObjects.csv');
+    new ObjectsToCsv(groupedObjects).toDisk('./output/testForThree.csv');
     console.log("FOUND MATCHES:::: " + largeGroups)
     console.log("FINISHED  " + "Started at- " + startTime + ' ENDED AT- ' + new Date().toLocaleTimeString())
   }
@@ -177,7 +179,7 @@ fs.createReadStream(fileToUse)
       console.log(_results.length + ' remaining from: ' + total);
     }//EXIT WHILE
     //convert newResults object to a csv file
-     new ObjectsToCsv(newResults).toDisk('./output/processed.csv');
+     new ObjectsToCsv(newResults).toDisk('./output/processResults.csv');
 
      console.log("FINISHED  " + "Started at- " + startTime + ' ENDED AT- ' + new Date().toLocaleTimeString())
   }
@@ -204,30 +206,9 @@ fs.createReadStream(fileToUse)
         //get data from current row
         let compareRowData = objectValues(searchRow);
         
-        /*
-        //loop for the matches array length to see if everything matches
-        for(let i = 0; i < matches.length; i++){
-          //if anyone doesnt match set isMatch to false
-          if(compareRowData[matches[i]].toLowerCase() != rowData[matches[i]].toLowerCase()){
-            isMatch = false;
-          }
-        }
-*/
         //get a match of first and last name
         if(rowData[1].toLowerCase() == compareRowData[1].toLowerCase() && rowData[2].toLowerCase() == compareRowData[2].toLowerCase() ){
           isMatch = true;
-         /*
-          const rowEmail = rowData[13];
-          const compareEmail = compareRowData[13];
-
-          if(
-            rowEmail == compareEmail ||
-            rowEmail == '' && compareEmail != '' ||
-            compareEmail == '' && rowEmail != ''
-            ){
-              isMatch = true;
-            }
-        */
         }
 
         //EXIT LOOPING FOR MATCHES
@@ -273,7 +254,7 @@ fs.createReadStream(fileToUse)
     }//EXIT WHILE
     //convert newResults object to a csv file
     console.log("OLD SIZE:",startSize, "NEW SIZE:", newResults.length, "TOTAL DUPLICATED:",isDupe )
-     new ObjectsToCsv(newResults).toDisk('./output/updated-people.csv');
+     new ObjectsToCsv(newResults).toDisk('./output/handleDuplicateNames.csv');
 
      console.log("FINISHED  " + "Started at- " + startTime + ' ENDED AT- ' + new Date().toLocaleTimeString())
   }

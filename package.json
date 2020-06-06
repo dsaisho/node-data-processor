@@ -13,7 +13,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "updatePeople": "node hello-node.js --name='test'",
+    "handleDuplicateNames": "node hello-node.js --config=people,data/people.csv",
+    "testForThree": "node hello-node.js --config=testFor3,data/data.csv",
+    "processResults": "node hello-node.js --config=process,data/data.csv",
     "debug": "node --inspect --inspect-port 9229 hello-node.js ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
