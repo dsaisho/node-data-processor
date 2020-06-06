@@ -7,11 +7,13 @@
   "dependencies": {
     "csv-parser": "^2.3.2",
     "curry": "^1.2.0",
+    "minimist": "^1.2.5",
     "nodemon": "^2.0.3",
     "objects-to-csv": "^1.3.6"
   },
   "devDependencies": {},
   "scripts": {
+    "updatePeople": "node hello-node.js --name='test'",
     "debug": "node --inspect --inspect-port 9229 hello-node.js ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

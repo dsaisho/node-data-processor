@@ -3,7 +3,11 @@ var curry = require('curry');
 const ObjectsToCsv = require('objects-to-csv');
 const fs = require('fs')
 const results = [];
+
+const argv = require('minimist')(process.argv.slice(2));
+console.log(argv.name);
 /*
+HELLO ROXANE
 matches = 
 [
       UPC(0), 
@@ -27,7 +31,7 @@ const skuLocation = 1;
 const matches = [0, 3, 11, 14, 15, 16, 19, 24, 25];
 
 
-const command = 'people';
+const command = 'peoplex';
 const fileToUse = "data/people.csv"
 
 fs.createReadStream(fileToUse)
