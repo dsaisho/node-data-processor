@@ -5,14 +5,10 @@ const fs = require('fs')
 const results = [];
 
 const config = require('minimist')(process.argv).config.split(',');
-console.log(config);
 
 const command = config[0]
 const fileToUse = config[1]
-
-console.log(command,fileToUse);
 /*
-look at update
 matches = 
 [
       UPC(0), 
