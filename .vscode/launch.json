@@ -29,7 +29,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\hello-node.js"
+            "program": "${workspaceFolder}\\vehicle-getter.js"
         }
     ]
 }
