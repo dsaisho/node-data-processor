@@ -5,6 +5,7 @@
   "main": "data-processor.js",
   "debugServer": 12345,
   "dependencies": {
+    "axios": "^0.21.1",
     "csv-parser": "^2.3.2",
     "curry": "^1.2.0",
     "minimist": "^1.2.5",
@@ -13,10 +14,11 @@
   },
   "devDependencies": {},
   "scripts": {
+    "get-vehicles": "node vehicle-getter.js",
     "handleDuplicateNames": "node data-processor.js --config=people,data/people.csv",
     "testForThree": "node data-processor.js --config=testFor3,data/data.csv",
     "processResults": "node data-processor.js --config=process,data/data.csv",
-    "debug": "node --inspect --inspect-port 9229 data-processor.js ",
+    "debug": "node --inspect --inspect-port 9229 vehicle-getter.js ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
