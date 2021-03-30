@@ -1,7 +1,5 @@
 ///USAGE
 
-ONLY USE TO MAKE MORE MONEY!
-THE VALUE OF EACH FUNCTION IS EQUAL TO THE MAN POWER HOURS IT WOULD TAKE TO DO THEM BY HAND!
 
 
 make sure to npm install if its your fisrt clone!
@@ -27,5 +25,6 @@ the value after the first comma is the path to the file you want to use, if you 
 
 then run:
 npm run handleDuplicateNames //this will run the script with a new file.
+
 
 
