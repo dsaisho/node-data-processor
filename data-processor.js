@@ -9,6 +9,7 @@ const config = require('minimist')(process.argv).config.split(',');
 const command = config[0]
 const fileToUse = config[1]
 /*
+test
 matches = 
 [
       UPC(0), 
